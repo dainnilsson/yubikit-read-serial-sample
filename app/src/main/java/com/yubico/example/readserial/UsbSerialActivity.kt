@@ -12,7 +12,7 @@ import com.yubico.yubikit.transport.usb.UsbSessionListener
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class MainActivity : Activity() {
+class UsbSerialActivity : Activity() {
     lateinit var yubikit: YubiKitManager
     lateinit var executor: ExecutorService
 
@@ -28,7 +28,7 @@ class MainActivity : Activity() {
                     executor.run {
                         ManagementApplication(session).use {
                             val serial = it.readConfiguration().serial
-                            runOnUiThread { Toast.makeText(this@MainActivity, "Serial: $serial", Toast.LENGTH_SHORT).show() }
+                            runOnUiThread { Toast.makeText(this@UsbSerialActivity, "Serial: $serial", Toast.LENGTH_SHORT).show() }
                         }
                     }
                 }
